@@ -1,0 +1,10 @@
+numpy~=1.26.4
+matplotlib~=3.9.1
+opencv-python~=4.5.5.64
+sklearn~=0.0
+imutils~=0.5.4
+tensorflow
+keras~=3.4.1
+
+dlib~=19.24.2
+scikit-learn~=1.5.1
