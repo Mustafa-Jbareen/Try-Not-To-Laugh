@@ -1,0 +1,51 @@
+GENKI-SZSL: Faces at different sizes/scales, Labled positions and sizes. 
+--------------------------------------------------------------------------------
+
+INTRODUCTION: 
+
+This is the GENKI SZSL (Many sizes and scales) dataset, collected by the 
+Machine Perception Laboratory, University of California, San Diego. In contrast
+to the GENKI-4K dataset, the images in this set were chosen to equalize scale
+of the faces relative to the images. Specifically, from a pool of about 40,000
+images, the images in this dataset were chosen so that 1/5th of the faces were
+less than 10% of the image width (700 images, chosen randomly from all images
+with that property), 1/5th of the faces were 10-20% of the image width, 1/5th
+of the faces were 20-30% of the image width, 1/5th of the faces were 30-50% of
+the image width, and the remaining 1/5th were 40%+ of the image width. After
+being chosen randomly from their appropriate face-size pools, the images were
+put into one dataset and given a standard random ordering from 1-3500.
+
+LABELS: 
+
+Each image has three labels: X Position, Y Position, and Size. The position
+labels specify the (x,y) coordinates of the center of a square box surrounding
+the face. The Size label specifies the diameter of the face box. 
+
+The file "GENKI-SZSL_Labels.txt" contains these labels, and the Nth line of the 
+file corresponds to the label for a corresponding image. That image's name
+is specified on the Nth line of "GENKI-SZSL_Images.txt", and is linked by the
+Nth symbolic link in the files directory:
+
+The "files" directory contains 3500 symbolic links, where file0001.jpg links
+to the file named by the first line of GENKI-SZSL_Images.txt, and so on. I.e.
+reading in the aliases gives the same images in the same order as that 
+specified in GENKI-SZSL_Images.txt.
+
+Each line has the following three integers:
+XPOS YPOS SIZE
+
+CITATION: 
+
+We ask that you acknowledge use of this dataset in any papers you publish with the following citation:
+	"http://mplab.ucsd.edu, The MPLab GENKI Dataset: GENKI-SZSL Subset."
+
+KNOWN PROPERTIES: 
+
+1) Some duplicate images are included in the dataset. This comes from the fact 
+that duplicate images were included in the source dataset that this dataset was 
+randomly drawn from. These duplicate images were labeled separately by humans, 
+and variation in the labels can give a measure to the normal human variation. 
+
+2) Some images contain multiple faces, but for each image, only one face is 
+labeled. 
+
