@@ -18,9 +18,9 @@ matplotlib.use('TkAgg')
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
 # Paths to the GENKI-4K data
-images_file = r"C:\Courses\Final_Project\Genki_Data\GENKI-R2009a\Subsets\GENKI-4K\GENKI-4K_Images.txt"
-labels_file = r"C:\Courses\Final_Project\Genki_Data\GENKI-R2009a\Subsets\GENKI-4K\GENKI-4K_Labels.txt"
-images_dir = r"C:\Courses\Final_Project\Genki_Data\GENKI-R2009a\Subsets\GENKI-4K\files"
+images_file = r"Genki_Data\GENKI-R2009a\Subsets\GENKI-4K\GENKI-4K_Images.txt"
+labels_file = r"Genki_Data\GENKI-R2009a\Subsets\GENKI-4K\GENKI-4K_Labels.txt"
+images_dir = r"Genki_Data\GENKI-R2009a\Subsets\GENKI-4K\files"
 
 # Initialize the list of data and labels
 data = []
@@ -84,11 +84,11 @@ for i in range(0, len(classTotals)):
 
 # Initialize data augmentation for training
 aug = ImageDataGenerator(
-    rotation_range=30,   # Rotate the image by up to 15 degrees
+    rotation_range=30,  # Rotate the image by up to 30 degrees
     width_shift_range=0.1,  # Shift the width by up to 10%
     height_shift_range=0.1,  # Shift the height by up to 10%
     shear_range=0.15,  # Shear the image by up to 15%
-    zoom_range=0.25,   # Zoom the image by up to 15%
+    zoom_range=0.25,  # Zoom the image by up to 25%
     horizontal_flip=True,  # Allow horizontal flips
     fill_mode='nearest'  # Fill any pixels lost after transformation
 )
@@ -111,7 +111,6 @@ H = model.fit(
     callbacks=[reduce_lr]
 )
 
-
 # Evaluate the network
 print('[INFO] evaluating network...')
 predictions = model.predict(testX, batch_size=32)
@@ -119,7 +118,7 @@ print(classification_report(testY.argmax(axis=1), predictions.argmax(axis=1), ta
 
 # Save the model to disk
 print('[INFO] serializing network...')
-model.save("genki_model_fullaugmented.h5")
+model.save("model.h5")
 
 # Plot training history
 plt.style.use('ggplot')
