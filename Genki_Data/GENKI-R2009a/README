@@ -1,0 +1,15 @@
+GENKI-R2009a
+--------------------------------------------------------------------------------
+
+The 2009a release of the GENKI data set contains 7172 unique image files, which
+combine to form two subsets: 
+
+-GENKI-4K: 4000 images, containing expression and head-pose labels.
+-GENKI-SZSL: 3500 images, containing face position and size labels.
+
+Each image file has a unique name. Each subset consists of an "Images" text file
+and a "Labels" text file. The Images file has one image name per line. The
+corresponding line in the Labels file contains the data label for that file.
+
+Specific type and meaning of each label is documented in each subset's "README"
+file.
