@@ -73,7 +73,7 @@ def run_detection(player_mode, duration, include_funny):
     laugh_counts = {}
     laugh_durations = {}
     laugh_start_times = {}
-    face_id = 0
+    face_id = 1
     total_laughs = 0  # Track total laughs for 1 player mode
 
     # Set up the game duration and camera
@@ -149,7 +149,7 @@ def run_detection(player_mode, duration, include_funny):
             # Display based on the number of players
             if player_mode == 2:
                 if fid in laugh_durations:
-                    cv2.putText(frameClone, f"ID: {fid} {label} - Duration: {laugh_durations[fid]:.2f}s",
+                    cv2.putText(frameClone, f"Player: {fid} {label} - Duration: {laugh_durations[fid]:.2f}s",
                                 (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.45,
                                 (0, 255, 0) if label == "Laughing" else (0, 0, 255), 2)
                 else:
@@ -208,7 +208,7 @@ def run_detection(player_mode, duration, include_funny):
         messagebox.showinfo("Game Over", f"Total Laugh Duration: {total_laugh_duration:.2f} seconds")
     else:
         # Determine winner in 2-player mode
-        if len(laugh_durations) == 2:
+        if len(laugh_durations) >= 1:
             winner = min(laugh_durations, key=laugh_durations.get)
             messagebox.showinfo("Game Over",
                                 f"Player {winner} wins with {laugh_durations[winner]:.2f} seconds of Laughing!")
@@ -253,7 +253,7 @@ def create_menu():
 
     # Funny media inclusion option
     include_funny_var = tk.BooleanVar(value=False)  # Default to not include
-    tk.Checkbutton(window, text="Include Funny Videos/Images", variable=include_funny_var, bg='lightblue').pack(pady=10)
+    tk.Checkbutton(window, text="Include Funny Media", variable=include_funny_var, bg='lightblue').pack(pady=10)
 
     # Start button
     tk.Button(window, text="Start Game", command=start_detection).pack(pady=20)
