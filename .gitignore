@@ -4,6 +4,3 @@
 # Ignore Python bytecode
 __pycache__/
 *.pyc
-
-# Ignore the funny directory (if needed)
-funny/
